@@ -11,24 +11,20 @@ export class SupplierService {
 
   createSupplier(supplier:Supplier){
     const headers = new HttpHeaders({'supplier':'new-supplier'})
-    this.http.post<{name:string}>('https://fruitmagacine-default-rtdb.firebaseio.com/suppliers.json', supplier, {headers:headers}).subscribe((response) => {
-      console.log(response);
-    })
+   return this.http.post<{name:string}>('https://fruitmagacine-default-rtdb.firebaseio.com/suppliers.json', supplier, {headers:headers})
   }
 
   deleteSupplier(id:string | undefined) {
-    this.http.delete(`https://fruitmagacine-default-rtdb.firebaseio.com/suppliers/${id}.json`)
-    .subscribe(() => {});
+   return this.http.delete(`https://fruitmagacine-default-rtdb.firebaseio.com/suppliers/${id}.json`);
   }
 
   deleteAllSuppliers(){
-    this.http.delete('https://fruitmagacine-default-rtdb.firebaseio.com/suppliers.json')
-    .subscribe(() => {
-    })
+   return this.http.delete('https://fruitmagacine-default-rtdb.firebaseio.com/suppliers.json');
+    
   }
 
   UpdateSupplier(id:string | undefined, supplier:Supplier){
-    this.http.put(`https://fruitmagacine-default-rtdb.firebaseio.com/suppliers/${id}.json`, supplier).subscribe();
+   return this.http.put(`https://fruitmagacine-default-rtdb.firebaseio.com/suppliers/${id}.json`, supplier);
   }
 
   getAllSuppliers(){

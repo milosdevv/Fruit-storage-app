@@ -19,7 +19,10 @@ export class supplierDashboardComponent implements OnInit{
   editMode:boolean = false;
   selectedSupplier:Supplier;
   ngOnInit(): void {
-    this.fetchAllTasks()
+    setTimeout(() => {
+
+      this.fetchAllTasks()
+    }, 0)
   }
 
   OpenCreateSupplierForm(){
@@ -53,11 +56,18 @@ export class supplierDashboardComponent implements OnInit{
 
   // HTTP Methods
   createOrUpdateSupplier(supplier: Supplier) {
-    if(!this.editMode) this.supplierService.createSupplier(supplier);
-    else 
-    this.supplierService.UpdateSupplier(this.currentSupplierId, supplier)
-    this.fetchAllTasks()
+    if (!this.editMode) {
+      this.supplierService.createSupplier(supplier).subscribe(() => {
+        this.fetchAllTasks(); // Fetch the updated list after creation
+      });
+    } else {
+      this.supplierService.UpdateSupplier(this.currentSupplierId, supplier).subscribe(() => {
+        this.fetchAllTasks(); // Fetch the updated list after update
+      });
+    }
+    this.showCreateSupplierForm = false; // Optionally close the form after creation/update
   }
+  
 
   getAllSuppliers(){
     this.supplierService.getAllSuppliers().subscribe((suppliers) => {
@@ -66,13 +76,15 @@ export class supplierDashboardComponent implements OnInit{
   }
 
   deleteSupplier(id: string | undefined) {
-    this.supplierService.deleteSupplier(id)
-    this.fetchAllTasks()
+    this.supplierService.deleteSupplier(id).subscribe(() => {
+      this.fetchAllTasks()
+    });
   }
 
   deleteAllSuppliers(){
-    this.supplierService.deleteAllSuppliers()
-    this.fetchAllTasks()
+    this.supplierService.deleteAllSuppliers().subscribe(() => {
+      this.fetchAllTasks()
+    })
 }
 
 private fetchAllTasks() {

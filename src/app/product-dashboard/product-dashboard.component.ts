@@ -50,24 +50,27 @@ export class ProductDashboardComponent implements OnInit{
   }
 
   createOrUpdateProduct(product:Product) {
-    if
-    (!this.editMode) 
-      this.productService.createProduct(product).subscribe((response) => {
-      console.log(response);
-    });
-    else
+    if (!this.editMode) {
+        this.productService.createProduct(product).subscribe(() => {
+        this.fetchAllProducts();
+      });
+    } else {
       this.productService.updateProduct(this.currentProductId, product)
-    this.fetchAllProducts();
+      this.fetchAllProducts();
+    }
+     
   }
 
   deleteProduct(id:string | undefined) {
-    this.productService.deleteProduct(id).subscribe(() =>{});
-    this.fetchAllProducts();
+    this.productService.deleteProduct(id).subscribe(() =>{
+      this.fetchAllProducts();
+    });
   }
 
   deleteAllproducts(){
-    this.productService.deleteAllProducts().subscribe();
-    this.fetchAllProducts();
+    this.productService.deleteAllProducts().subscribe(() => {
+      this.fetchAllProducts();
+    });
   }
 
   getAllProducts(){
