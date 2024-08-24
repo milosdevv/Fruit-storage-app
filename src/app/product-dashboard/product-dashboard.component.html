@@ -20,31 +20,34 @@
     <hr>
 
     <div class="dashboard-item-container">
+      <div class="loader" *ngIf="isLoading"></div>
+      <ng-container *ngIf="!isLoading">
         <div *ngIf="allProducts.length < 1">
-            <h2>No products has been created yet!</h2>
+          <h2>No products has been created yet!</h2>
+      </div>
+      <div class="content-item" [ngClass]="'priority-' + product.productPriority" *ngFor="let product of allProducts">
+        <div class="content-title">
+          <h3>Product</h3>
         </div>
-        <div class="content-item" [ngClass]="'priority-' + product.productPriority" *ngFor="let product of allProducts">
-          <div class="content-title">
-            <h3>Product</h3>
-          </div>
-          <p><b>Name of product: {{product.productName}}</b></p>
-          <p><b>Type of product: {{product.productType}}</b></p>
-          <p><b>Class(quality grade): {{product.productClass}}</b></p>
-          <p><b>Date of entry: {{product.productDateOfEntry}}</b></p>
-          <p><b>Expiry date: {{product.productExpiryDate}}</b></p>
-          <p><b>Priority: {{product.productPriority}}</b></p>
-          <p><b>Status: {{product.productStatus}}</b></p>
-          <div class="action-icons">
-            <button class="action-btn" title="Detail">
-              <i class="fa fa-info-circle" aria-hidden="true"></i>
-            </button>
-            <button class="action-btn" title="Edit" (click)="onEditProductClick(product.id)">
-              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-            </button>
-            <button class="action-btn"title="Delete" (click)="deleteProduct(product.id)">
-              <i class="fa fa-trash" aria-hidden="true"></i>
-            </button>
-          </div>
+        <p><b>Name of product: {{product.productName}}</b></p>
+        <p><b>Type of product: {{product.productType}}</b></p>
+        <p><b>Class(quality grade): {{product.productClass}}</b></p>
+        <p><b>Date of entry: {{product.productDateOfEntry}}</b></p>
+        <p><b>Expiry date: {{product.productExpiryDate}}</b></p>
+        <p><b>Priority: {{product.productPriority}}</b></p>
+        <p><b>Status: {{product.productStatus}}</b></p>
+        <div class="action-icons">
+          <button class="action-btn" title="Detail">
+            <i class="fa fa-info-circle" aria-hidden="true"></i>
+          </button>
+          <button class="action-btn" title="Edit" (click)="onEditProductClick(product.id)">
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          </button>
+          <button class="action-btn"title="Delete" (click)="deleteProduct(product.id)">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </button>
         </div>
+      </div>
+      </ng-container>
       </div>
 </div>

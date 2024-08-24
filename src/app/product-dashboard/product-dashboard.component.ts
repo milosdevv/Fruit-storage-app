@@ -16,6 +16,7 @@ export class ProductDashboardComponent implements OnInit{
   currentProductId:string = '';
   editMode:boolean = false;
   selectedProduct:Product;
+  isLoading:boolean = false;
 
   ngOnInit(): void {
     this.fetchAllProducts();
@@ -80,9 +81,11 @@ export class ProductDashboardComponent implements OnInit{
   }
 
   private fetchAllProducts() {
+    this.isLoading = true;
     this.productService.getAllproducts().subscribe((products) => {
       this.allProducts = products
       console.log(products);
+      this.isLoading = false;
     })
   }
 }

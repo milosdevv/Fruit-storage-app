@@ -15,9 +15,10 @@ export class supplierDashboardComponent implements OnInit{
   allSuppliers: Supplier[] = [];
   supplierService:SupplierService = inject(SupplierService);
   currentSupplierId:string = '';
-
   editMode:boolean = false;
   selectedSupplier:Supplier;
+  isLoading:boolean = false;
+
   ngOnInit(): void {
     setTimeout(() => {
 
@@ -88,8 +89,10 @@ export class supplierDashboardComponent implements OnInit{
 }
 
 private fetchAllTasks() {
+  this.isLoading = true;
   this.supplierService.getAllSuppliers().subscribe((suppliers) => {
     this.allSuppliers = suppliers;
+    this.isLoading = false;
   });
 }
 }
