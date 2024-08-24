@@ -1,0 +1,69 @@
+<div class="overlay">
+	<div class="popup">
+		<h2>{{isEditMode ? 'Uredi dostavljaca' : 'Kreiraj dostavljaca'}}</h2>
+		<a class="close" routerLink="supplier" (click)="OnCloseForm()">&times;</a>
+		<div class="content">
+			<section class="container">
+                <form action="#" class="form" #supplierForm="ngForm" (ngSubmit)="onSupplierFormSubmitted(supplierForm)">
+                  <div class="column">
+                    <div class="input-box">
+                      <label>Name</label>
+                      <input type="text" required name="supplierName" ngModel/>
+                    </div>
+                    <div class="input-box">
+                      <label>Surname</label>
+                      <input type="text" required name="supplierSurname" ngModel/>
+                    </div>
+                  </div>
+               
+                  <div class="column">
+                    <div class="input-box">
+                      <label>Phone number</label>
+                      <input type="number" required name="supplierPhoneNumber" ngModel/>
+                    </div>
+                    <div class="input-box">
+                      <label>Datum dolaska</label>
+                      <input type="date" required name="supplierDateOfArrival" ngModel/>
+                    </div>
+                  </div>
+
+                  <div class="column">
+                    <div class="input-box">
+                      <label>Adresa polaska</label>
+                      <input type="text" required name="supplierBeginDestination" ngModel/>
+                    </div>
+                    <div class="input-box">
+                      <label>Konacna adresa</label>
+                      <input type="text" required name="supplierFinalDestination" ngModel/>
+                    </div>
+                  </div>
+                  <div class="input-box address">
+                    <div class="column">
+                      <h3>Prioritet</h3>
+                      <div class="select-box">
+                        <select name="supplierStatus" ngModel>
+                          <option hidden>Priority</option>
+                          <option value="low">Low</option>
+                          <option value="medium">Medium</option>
+                          <option value="high">High</option>
+                          <option value="critical">Critical</option>
+                        </select>
+                      </div>
+                      <h3>Status</h3>
+                      <div class="select-box">
+                        <select name="supplierPriority" ngModel>
+                          <option hidden>Status</option>
+                          <option value="open">Open</option>
+                          <option value="started">Started</option>
+                          <option value="in-progress">In Progress</option>
+                          <option value="complete">Complete</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="submit">{{isEditMode ? 'Uredi' : 'Nastavi'}}</button>
+                </form>
+              </section>
+		</div>
+	</div>
+</div>
