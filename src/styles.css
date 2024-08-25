@@ -35,6 +35,7 @@ hr{
     margin: 20px 0px;
 }
 .dashboard-item-container{
+  height: 85vh;
     margin-top: 30px;
     padding: 30px 50px;
     display: flex;
