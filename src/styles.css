@@ -17,7 +17,7 @@ h1, h2, h3, h4, h5, h6, p{
 
 .dashboard-container{
     padding: 30px 100px;
-    background-color: #dedede;
+    background-color: #e4e4e4;
 }
 
 .dashboard-wrapper{
@@ -81,9 +81,10 @@ i{
 
 .create-btn{
     padding: 12px 30px;
-    background-color: #3498DB;
+    background-color: #28282B;
     border: #cdcdcd 1px solid;
     color: white;
+    border-radius: 20px;
 }
 
 .loader {
@@ -160,4 +161,17 @@ i{
   @keyframes fadeout {
     from {top: 30px; opacity: 1;}
     to {top: 0; opacity: 0;}
+  }
+
+
+  @media screen and (max-width: 500px) {
+    .dashboard-container{
+      padding: 30px 40px;
+    }
+    .dashboard-wrapper {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
   }

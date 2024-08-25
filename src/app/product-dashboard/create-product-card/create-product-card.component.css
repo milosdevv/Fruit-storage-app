@@ -152,6 +152,21 @@
     }
   }
   @media screen and (max-width: 500px) {
+    .popup{
+      width: 90%;
+      height: 90%;
+      margin: 30px auto;
+      overflow: hidden;
+    }
+
+    .popup .content {
+      max-height: 100%;
+      padding: 20px 0;
+    }
+
+    .container{
+      padding: 0 25px;
+    }
     .form .column {
       flex-wrap: wrap;
     }
