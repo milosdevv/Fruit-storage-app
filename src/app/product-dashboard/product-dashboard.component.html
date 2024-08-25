@@ -8,12 +8,12 @@
 <div class="dashboard-container">
     <div class="dashboard-wrapper">
         <div>
-            <h2>Products Dashboard</h2>
+            <h2>Artikli</h2>
         </div>
         <div>
-            <button class="create-btn" (click)="openCreateProductForm()">Create Product</button>
+            <button class="create-btn" (click)="openCreateProductForm()">Kreiraj</button>
             <button class="create-btn" (click)="getAllProducts()">Fetch Tasks</button>
-            <button class="create-btn" (click)="deleteAllproducts()">Clear Tasks</button>
+            <button class="create-btn" (click)="deleteAllproducts()">Obrisi sve</button>
         </div>
     </div>
 
@@ -23,7 +23,7 @@
       <div class="loader" *ngIf="isLoading"></div>
       <ng-container *ngIf="!isLoading">
         <div *ngIf="allProducts.length < 1">
-          <h2>No products has been created yet!</h2>
+          <h2 class="dashboard-item-heading">No products has been created yet!</h2>
       </div>
       <div class="content-item" [ngClass]="'priority-' + product.productPriority" *ngFor="let product of allProducts">
         <div class="content-title">
