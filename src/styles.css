@@ -35,7 +35,7 @@ hr{
     margin: 20px 0px;
 }
 .dashboard-item-container{
-  height: 85vh;
+  height: 72vh;
     margin-top: 30px;
     padding: 30px 50px;
     display: flex;
@@ -235,6 +235,7 @@ i{
       padding: 30px 5px;
       flex-direction: column;
       align-items: center;
+      height: 60vh;
     }
     .dashboard-container{
       padding: 30px 40px;
