@@ -17,7 +17,7 @@ import { supplierDashboardComponent } from './dashboard/supplierDashboard.compon
 
 const routes: Routes = [
   { path: 'supplier', component: supplierDashboardComponent },
-  { path: 'products', component: ProductDashboardComponent }
+  { path: 'products', component: ProductDashboardComponent },
 ];
 
 @NgModule({
