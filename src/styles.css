@@ -224,6 +224,9 @@ i{
 
 
   @media screen and (max-width: 768px) {
+    .container{
+      padding-bottom: 50px;
+    }
     .content-item{
       width: 100%;
     }
@@ -251,11 +254,6 @@ i{
 
     .popup .content {
       max-height: 100%;
-      padding: 20px 0;
-    }
-
-    .container{
-      padding: 0 25px;
     }
     .form .column {
       flex-wrap: wrap;
