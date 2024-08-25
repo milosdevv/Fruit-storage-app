@@ -56,8 +56,9 @@ export class ProductDashboardComponent implements OnInit{
         this.fetchAllProducts();
       });
     } else {
-      this.productService.updateProduct(this.currentProductId, product)
-      this.fetchAllProducts();
+      this.productService.updateProduct(this.currentProductId, product).subscribe(() => {
+        this.fetchAllProducts();
+      })
     }
      
   }

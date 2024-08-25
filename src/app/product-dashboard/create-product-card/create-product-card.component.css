@@ -59,11 +59,6 @@
     cursor: pointer;
   }
 
-
-  small{
-    color: red;
-    font-weight: bold;
-  }
   /*Responsive*/
 
   @media screen and (max-width: 768px){

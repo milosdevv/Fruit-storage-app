@@ -23,7 +23,7 @@ export class ProductService {
   }
 
   updateProduct(id:string | undefined, product:Product) {
-    this.http.put(`https://fruitmagacine-default-rtdb.firebaseio.com/products/${id}.json`, product).subscribe()
+   return this.http.put(`https://fruitmagacine-default-rtdb.firebaseio.com/products/${id}.json`, product)
   }
 
   getAllproducts(){

@@ -1,7 +1,7 @@
 <div class="overlay">
 	<div class="popup">
-		<h2>kreiraj proizvod</h2>
-    <small>Molimo popunite sva polja</small>
+		<h2>{{isEditMode ? 'Uredi Proizvod' : 'Unesi proizvod'}}</h2>
+    <small *ngIf="!isEditMode">Molimo popunite sva polja</small>
 		<a class="close" routerLink="products" (click)="onCloseForm()">&times;</a>
 		<div class="content">
 			<section class="container">
@@ -79,7 +79,7 @@
                       </div>
                     </div>
                   </div>
-                  <button type="submit" [disabled]="!productForm.valid" [ngClass]="productForm.valid ? 'enabled' : 'disabled'">nastavi</button>
+                  <button type="submit" [disabled]="!productForm.valid">{{isEditMode ? 'Uredi' : 'Nastavi'}}</button>
                 </form>
               </section>
 		</div>

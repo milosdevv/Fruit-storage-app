@@ -1,6 +1,7 @@
 <div class="overlay">
 	<div class="popup">
 		<h2>{{isEditMode ? 'Uredi dostavljaca' : 'Kreiraj dostavljaca'}}</h2>
+    <small *ngIf="!isEditMode">Molimo popunite sva polja</small>
 		<a class="close" routerLink="supplier" (click)="OnCloseForm()">&times;</a>
 		<div class="content">
 			<section class="container">
@@ -8,39 +9,45 @@
                   <div class="column">
                     <div class="input-box">
                       <label>Name</label>
-                      <input type="text" required name="supplierName" ngModel/>
+                      <input type="text" required name="supplierName" ngModel #sName="ngModel"/>
+                      <small *ngIf="sName.invalid && sName.touched">Morate popuniti ovo polje</small>
                     </div>
                     <div class="input-box">
                       <label>Surname</label>
-                      <input type="text" required name="supplierSurname" ngModel/>
+                      <input type="text" required name="supplierSurname" ngModel #surName="ngModel"/>
+                      <small *ngIf="surName.invalid && surName.touched">Morate popuniti ovo polje</small>
                     </div>
                   </div>
                
                   <div class="column">
                     <div class="input-box">
                       <label>Phone number</label>
-                      <input type="number" required name="supplierPhoneNumber" ngModel/>
+                      <input type="number" required name="supplierPhoneNumber" ngModel #pNumber="ngModel"/>
+                      <small *ngIf="pNumber.invalid && pNumber.touched">Morate popuniti ovo polje</small>
                     </div>
                     <div class="input-box">
                       <label>Datum dolaska</label>
-                      <input type="date" required name="supplierDateOfArrival" ngModel/>
+                      <input type="date" required name="supplierDateOfArrival" ngModel #supplierDOA="ngModel"/>
+                      <small *ngIf="supplierDOA.invalid && supplierDOA.touched">Morate popuniti ovo polje</small>
                     </div>
                   </div>
 
                   <div class="column">
                     <div class="input-box">
                       <label>Adresa polaska</label>
-                      <input type="text" required name="supplierBeginDestination" ngModel/>
+                      <input type="text" required name="supplierBeginDestination" ngModel #sbd="ngModel"/>
+                      <small *ngIf="sbd.invalid && sbd.touched">Morate popuniti ovo polje</small>
                     </div>
                     <div class="input-box">
                       <label>Konacna adresa</label>
-                      <input type="text" required name="supplierFinalDestination" ngModel/>
+                      <input type="text" required name="supplierFinalDestination" ngModel #fAddres="ngModel"/>
+                      <small *ngIf="fAddres.invalid && fAddres.touched">Morate popuniti ovo polje</small>
                     </div>
                   </div>
                   <div class="input-box address">
                     <div class="column">
                       <div class="select-box">
-                        <select name="supplierStatus" ngModel>
+                        <select name="supplierStatus" ngModel #sStatus="ngModel">
                           <option value="" disabled selected hidden>Priority</option>
                           <option hidden>Priority</option>
                           <option value="low">Low</option>
@@ -48,9 +55,10 @@
                           <option value="high">High</option>
                           <option value="critical">Critical</option>
                         </select>
+                        <small *ngIf="sStatus.invalid && sStatus.touched">Morate popuniti ovo polje</small>
                       </div>
                       <div class="select-box">
-                        <select name="supplierPriority" ngModel>
+                        <select name="supplierPriority" ngModel #sPriority="ngModel">
                           <option value="" disabled selected hidden>Status</option>
                           <option hidden>Status</option>
                           <option value="open">Open</option>
@@ -58,10 +66,11 @@
                           <option value="in-progress">In Progress</option>
                           <option value="complete">Complete</option>
                         </select>
+                        <small *ngIf="sPriority.invalid && sPriority.touched">Morate popuniti ovo polje</small>
                       </div>
                     </div>
                   </div>
-                  <button type="submit">{{isEditMode ? 'Uredi' : 'Nastavi'}}</button>
+                  <button type="submit" [disabled]="!supplierForm.valid">{{isEditMode ? 'Uredi' : 'Nastavi'}}</button>
                 </form>
               </section>
 		</div>
