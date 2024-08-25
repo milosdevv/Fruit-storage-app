@@ -28,7 +28,9 @@ export class createSupplierCardComponent implements AfterViewInit{
   }
 
   onSupplierFormSubmitted(supplierForm: NgForm) {
-    this.emitSupplierData.emit(supplierForm.value);
-    this.closeForm.emit(false);
+    if(supplierForm.valid) {
+      this.emitSupplierData.emit(supplierForm.value);
+      this.closeForm.emit(false);
+    }
   }
 }

@@ -36,8 +36,4 @@ onProductFormSubmitted(productForm: NgForm) {
     alert('Form is invalid');
   }
 }
-
-get buttonClass() {
-  return this.productForm?.valid ? 'enabled' : 'disabled';
-}
 }
