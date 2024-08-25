@@ -27,8 +27,17 @@ onCloseForm(){
   this.closeForm.emit(false)
 }
 
-onProductFormSubmitted(productForm:NgForm){
-  this.closeForm.emit(false)
-  this.emitProductData.emit(productForm.value)
+onProductFormSubmitted(productForm: NgForm) {
+  if (productForm.valid) {
+    this.closeForm.emit(false);
+    this.emitProductData.emit(productForm.value);
+    console.log('Form submitted:', productForm.value);
+  } else {
+    alert('Form is invalid');
+  }
+}
+
+get buttonClass() {
+  return this.productForm?.valid ? 'enabled' : 'disabled';
 }
 }

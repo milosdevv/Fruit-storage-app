@@ -1,6 +1,7 @@
 <div class="overlay">
 	<div class="popup">
 		<h2>kreiraj proizvod</h2>
+    <small>Molimo popunite sva polja</small>
 		<a class="close" routerLink="products" (click)="onCloseForm()">&times;</a>
 		<div class="content">
 			<section class="container">
@@ -8,36 +9,51 @@
                   <div class="column">
                     <div class="input-box">
                       <label>Name of product</label>
-                      <input type="text" required name="productName" ngModel/>
+                      <input type="text" required name="productName" ngModel #pName="ngModel"/>
+                      <div>
+                        <small *ngIf="pName.invalid && pName.touched">Morate popuniti ovo polje</small>
+                      </div>
                     </div>
                     <div class="input-box">
                       <label>Type of product</label>
-                      <input type="text" required name="productType" ngModel/>
+                      <input type="text" required name="productType" ngModel #topName="ngModel"/>
+                      <div>
+                        <small *ngIf="topName.invalid && topName.touched">Morate popuniti ovo polje</small>
+                      </div>
                     </div>
                   </div>
                
                   <div class="column">
                     <div class="input-box">
                       <label>Class(quality grade)</label>
-                      <input type="text" required name="productClass" ngModel/>
+                      <input type="text" required name="productClass" ngModel #cName="ngModel"/>
+                      <div>
+                        <small *ngIf="cName.invalid && cName.touched">Morate popuniti ovo polje</small>
+                      </div>
                     </div>
                     <div class="input-box">
                       <label>Date of entry</label>
-                      <input type="date" required name="productDateOfEntry" ngModel/>
+                      <input type="date" required name="productDateOfEntry" ngModel #doeName="ngModel"/>
+                      <div>
+                        <small *ngIf="doeName.invalid && doeName.touched">Morate popuniti ovo polje</small>
+                      </div>
                     </div>
                   </div>
 
                   <div class="column">
                     <div class="input-box">
                       <label>Expiry date</label>
-                      <input type="date" required name="productExpiryDate" ngModel/>
+                      <input type="date" required name="productExpiryDate" ngModel #eName="ngModel"/>
+                      <div>
+                        <small *ngIf="eName.invalid && eName.touched">Morate popuniti ovo polje</small>
+                      </div>
                     </div>
                     
                   </div>
                   <div class="input-box address">
                     <div class="column">
                       <div class="select-box">
-                        <select name="productStatus" ngModel>
+                        <select name="productStatus" ngModel #pStatusName="ngModel">
                           <option value="" disabled selected hidden>Priority</option>
                           <option hidden>Priority</option>
                           <option value="low">Low</option>
@@ -45,19 +61,25 @@
                           <option value="high">High</option>
                           <option value="critical">Critical</option>
                         </select>
+                        <div>
+                          <small *ngIf="pStatusName.invalid && pStatusName.touched">Morate popuniti ovo polje</small>
+                        </div>
                       </div>
                       <div class="select-box">
-                        <select name="productPriority" ngModel>
+                        <select name="productPriority" ngModel #productPriorityName="ngModel">
                           <option value="" disabled selected hidden>Status</option>
                           <option value="open">Open</option>
                           <option value="started">Started</option>
                           <option value="in-progress">In Progress</option>
                           <option value="complete">Complete</option>
                         </select>
+                        <div>
+                          <small *ngIf="productPriorityName.invalid && productPriorityName.touched">Morate popuniti ovo polje</small>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <button type="submit">nastavi</button>
+                  <button type="submit" [disabled]="!productForm.valid" [ngClass]="productForm.valid ? 'enabled' : 'disabled'">nastavi</button>
                 </form>
               </section>
 		</div>
