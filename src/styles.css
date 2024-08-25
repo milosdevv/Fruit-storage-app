@@ -219,7 +219,13 @@ i{
   
 
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 768px) {
+    .content-item{
+      width: 100%;
+    }
+    .dashboard-item-container{
+      padding: 30px 5px;
+    }
     .dashboard-container{
       padding: 30px 40px;
     }

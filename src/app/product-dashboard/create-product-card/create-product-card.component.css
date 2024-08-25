@@ -94,10 +94,6 @@
   /*Responsive*/
 
   @media screen and (max-width: 768px){
-    .popup{
-      width: 70%;
-    }
-
     .form .column{
      flex-direction: column;
     }
