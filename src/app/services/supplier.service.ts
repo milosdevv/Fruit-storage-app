@@ -7,6 +7,7 @@ import { map } from 'rxjs';
 })
 export class SupplierService {
   http:HttpClient = inject(HttpClient);
+  allSuppliers: Supplier[] = [];
   constructor() { }
 
   createSupplier(supplier:Supplier){
@@ -25,6 +26,16 @@ export class SupplierService {
 
   UpdateSupplier(id:string | undefined, supplier:Supplier){
    return this.http.put(`https://fruitmagacine-default-rtdb.firebaseio.com/suppliers/${id}.json`, supplier);
+  }
+
+  getSupplierDetails(id:string | undefined){
+   return this.http.get(`https://fruitmagacine-default-rtdb.firebaseio.com/suppliers/${id}.json`)
+    .pipe(map((response) => {
+      console.log(response);
+      let supplierDetail = {};
+      supplierDetail = {...response,id:id};
+      return supplierDetail;
+    }))
   }
 
   getAllSuppliers(){

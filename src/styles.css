@@ -71,6 +71,9 @@ i{
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .priority-complete{
     border-top: green 10px solid;
@@ -223,7 +226,11 @@ i{
   }
   
 
-
+  @media screen and (max-width: 1024px){
+    .content-item{
+      width: 100%;
+    }
+  }
   @media screen and (max-width: 768px) {
     .container{
       padding-bottom: 50px;
@@ -259,5 +266,14 @@ i{
     }
     .form .column {
       flex-wrap: wrap;
+    }
+  }
+
+  @media screen and (max-width: 425px){
+    .popup{
+      width: 90%;
+      height: 50%;
+      margin: 30px auto;
+      overflow: hidden;
     }
   }

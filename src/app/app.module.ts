@@ -14,6 +14,8 @@ import { ProductDashboardComponent } from './product-dashboard/product-dashboard
 import { CreateProductCardComponent } from './product-dashboard/create-product-card/create-product-card.component';
 import { createSupplierCardComponent } from './dashboard/create-supplier-card/create-supplier-card.component';
 import { supplierDashboardComponent } from './dashboard/supplierDashboard.component';
+import { ProductDetailsComponent } from './product-dashboard/product-details/product-details.component';
+import { SupplierDetailsComponent } from './dashboard/supplier-details/supplier-details.component';
 
 const routes: Routes = [
   { path: 'supplier', component: supplierDashboardComponent },
@@ -30,6 +32,8 @@ const routes: Routes = [
     TaskDetailsComponent,
     ProductDashboardComponent,
     CreateProductCardComponent,
+    ProductDetailsComponent,
+    SupplierDetailsComponent,
   ],
   imports: [
     CommonModule,

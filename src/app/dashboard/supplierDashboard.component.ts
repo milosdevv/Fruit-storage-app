@@ -11,6 +11,7 @@ import { SupplierService } from '../services/supplier.service';
 })
 export class supplierDashboardComponent implements OnInit{
   showCreateSupplierForm: boolean = false;
+  showSupplierDetails:boolean = false;
   http:HttpClient = inject(HttpClient);
   allSuppliers: Supplier[] = [];
   supplierService:SupplierService = inject(SupplierService);
@@ -18,6 +19,7 @@ export class supplierDashboardComponent implements OnInit{
   editMode:boolean = false;
   selectedSupplier:Supplier;
   isLoading:boolean = false;
+  currentSupplier:Supplier | null = null;
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -41,6 +43,17 @@ export class supplierDashboardComponent implements OnInit{
   };
   }
 
+  showCurrentSupplierDetails(id: string | undefined){
+    this.showSupplierDetails = true;
+    this.supplierService.getSupplierDetails(id).subscribe({next :(data:Supplier) => {
+      this.currentSupplier = data;
+    }});;
+  }
+
+  closeSupplierDetails(){
+    this.showSupplierDetails = false;
+  }
+
   onEditSupplierClick(id:string | undefined){
     this.currentSupplierId = id;
     this.showCreateSupplierForm = true;
@@ -59,14 +72,14 @@ export class supplierDashboardComponent implements OnInit{
   createOrUpdateSupplier(supplier: Supplier) {
     if (!this.editMode) {
       this.supplierService.createSupplier(supplier).subscribe(() => {
-        this.fetchAllTasks(); // Fetch the updated list after creation
+        this.fetchAllTasks(); 
       });
     } else {
       this.supplierService.UpdateSupplier(this.currentSupplierId, supplier).subscribe(() => {
-        this.fetchAllTasks(); // Fetch the updated list after update
+        this.fetchAllTasks(); 
       });
     }
-    this.showCreateSupplierForm = false; // Optionally close the form after creation/update
+    this.showCreateSupplierForm = false; 
   }
   
 

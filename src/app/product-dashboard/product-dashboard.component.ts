@@ -10,6 +10,7 @@ import { ProductService } from '../services/product.service';
 })
 export class ProductDashboardComponent implements OnInit{
   showCreateProductForm: boolean = false;
+  showProductDetails:boolean = false;
   http:HttpClient = inject(HttpClient)
   allProducts:Product[] = [];
   productService:ProductService = inject(ProductService);
