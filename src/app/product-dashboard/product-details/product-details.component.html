@@ -1,1 +1,46 @@
-<p>product-details works!</p>
+<div class="overlay">
+	<div class="popup">
+        <h2>{{ currentProduct?.productName }}</h2>
+        <hr>
+		<a class="close" routerLink="product" (click)="onCloseProductDetail()">&times;</a>
+		<div class="content">
+			<section class="container">
+                <div>
+                    <p>
+                        {{ currentProduct?.productName }}
+                    </p>
+                </div>
+                <div>
+                    <div>
+                        <strong>Tip: </strong>
+                        {{ currentProduct?.productType }}
+                    </div>
+                    <div>
+                        <strong>Klasa: </strong>
+                        {{ currentProduct?.productClass }} 
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <strong>Datum primanja: </strong>
+                        {{ currentProduct?.productDateOfEntry }}
+                    </div>
+                    <div>
+                        <strong>Datum isteka: </strong>
+                        {{ currentProduct?.productExpiryDate }} 
+                    </div>
+
+                    <div>
+                        <strong>prioritet: </strong>
+                        {{ currentProduct?.productPriority }} 
+                    </div>
+
+                    <div>
+                        <strong>Status: </strong>
+                        {{ currentProduct?.productStatus }} 
+                    </div>
+                </div>
+            </section>
+		</div>
+	</div>
+</div>

@@ -12,7 +12,7 @@ export class SupplierDetailsComponent {
 
   @Input() currentSupplier: Supplier | null = null;
 
-  OnCloseTaskDetail(){
+  OnCloseSupplierDetail(){
     this.CloseDetailView.emit(false);
   }
 }

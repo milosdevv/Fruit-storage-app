@@ -18,6 +18,7 @@ export class ProductDashboardComponent implements OnInit{
   editMode:boolean = false;
   selectedProduct:Product;
   isLoading:boolean = false;
+  currentProduct: Product | null = null;
 
   ngOnInit(): void {
     this.fetchAllProducts();
@@ -35,6 +36,17 @@ export class ProductDashboardComponent implements OnInit{
       productStatus:'',
       productPriority:''
     }
+  }
+
+  showCurrentProductDetails(id:string | undefined) {
+    this.showProductDetails = true;
+    this.productService.getProductDetails(id).subscribe({next :(data:Product) => {
+      this.currentProduct = data;
+    }})
+  }
+
+  closeProductDetails(){
+    this.showProductDetails = false
   }
 
   onEditProductClick(id:string | undefined){

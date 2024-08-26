@@ -26,6 +26,15 @@ export class ProductService {
    return this.http.put(`https://fruitmagacine-default-rtdb.firebaseio.com/products/${id}.json`, product)
   }
 
+  getProductDetails(id:string | undefined) {
+    return this.http.get<{[key:string]: Product}>(`https://fruitmagacine-default-rtdb.firebaseio.com/products/${id}.json`).pipe(map((response) => {
+      let productDetail = {};
+      productDetail = {...Product};
+      productDetail = {...response, id: id};
+      return productDetail;
+    }))
+  }
+
   getAllproducts(){
     return this.http.get<{ [key: string]: Product }>('https://fruitmagacine-default-rtdb.firebaseio.com/products.json')
      .pipe(

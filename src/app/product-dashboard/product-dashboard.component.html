@@ -5,6 +5,10 @@
 [isEditMode]="editMode"
 [selectedProduct]="selectedProduct"></app-create-product-card>
 
+<app-product-details *ngIf="showProductDetails"
+(closeDetailView)="closeProductDetails()"
+[currentProduct]="currentProduct"></app-product-details>
+
 <div class="dashboard-container">
     <div class="dashboard-wrapper">
         <div>
@@ -37,7 +41,7 @@
         <p><b>Priority: {{product.productPriority}}</b></p>
         <p><b>Status: {{product.productStatus}}</b></p>
         <div class="action-icons">
-          <button class="action-btn" title="Detail">
+          <button class="action-btn" title="Detail" (click)="showCurrentProductDetails(product.id)">
             <i class="fa fa-info-circle" aria-hidden="true"></i>
           </button>
           <button class="action-btn" title="Edit" (click)="onEditProductClick(product.id)">

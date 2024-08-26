@@ -2,11 +2,10 @@
 	<div class="popup">
         <h2>{{ currentSupplier?.supplierName }}</h2>
         <hr>
-		<a class="close" href="#" (click)="OnCloseTaskDetail()">&times;</a>
+		<a class="close" routerLink="supplier" (click)="OnCloseSupplierDetail()">&times;</a>
 		<div class="content">
 			<section class="container">
                 <div>
-                    <h3>Description</h3>
                     <p>
                         {{ currentSupplier?.supplierName }} {{ currentSupplier?.supplierSurname }}
                     </p>
