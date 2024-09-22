@@ -11,23 +11,23 @@ export class ProductService {
   constructor() { }
 
   createProduct(product:Product) {
-   return this.http.post<{name:string}>('https://fruitmagacine-default-rtdb.firebaseio.com/products.json', product)
+   return this.http.post<{name:string}>('https://storage-application-management-default-rtdb.firebaseio.com/products.json', product)
   }
 
   deleteProduct(id:string | undefined) {
-   return this.http.delete(`https://fruitmagacine-default-rtdb.firebaseio.com/products/${id}.json`)
+   return this.http.delete(`https://storage-application-management-default-rtdb.firebaseio.com/products/${id}.json`)
   }
 
   deleteAllProducts() {
-    return this.http.delete('https://fruitmagacine-default-rtdb.firebaseio.com/products.json')
+    return this.http.delete('https://storage-application-management-default-rtdb.firebaseio.com/products.json')
   }
 
   updateProduct(id:string | undefined, product:Product) {
-   return this.http.put(`https://fruitmagacine-default-rtdb.firebaseio.com/products/${id}.json`, product)
+   return this.http.put(`https://storage-application-management-default-rtdb.firebaseio.com/products/${id}.json`, product)
   }
 
   getProductDetails(id:string | undefined) {
-    return this.http.get<{[key:string]: Product}>(`https://fruitmagacine-default-rtdb.firebaseio.com/products/${id}.json`).pipe(map((response) => {
+    return this.http.get<{[key:string]: Product}>(`https://storage-application-management-default-rtdb.firebaseio.com/products/${id}.json`).pipe(map((response) => {
       let productDetail = {};
       productDetail = {...Product};
       productDetail = {...response, id: id};
@@ -36,7 +36,7 @@ export class ProductService {
   }
 
   getAllproducts(){
-    return this.http.get<{ [key: string]: Product }>('https://fruitmagacine-default-rtdb.firebaseio.com/products.json')
+    return this.http.get<{ [key: string]: Product }>('https://storage-application-management-default-rtdb.firebaseio.com/products.json')
      .pipe(
        map((response) => {
          let products: Product[] = [];

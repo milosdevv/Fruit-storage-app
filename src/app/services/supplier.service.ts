@@ -12,24 +12,24 @@ export class SupplierService {
 
   createSupplier(supplier:Supplier){
     const headers = new HttpHeaders({'supplier':'new-supplier'})
-   return this.http.post<{name:string}>('https://fruitmagacine-default-rtdb.firebaseio.com/suppliers.json', supplier, {headers:headers})
+   return this.http.post<{name:string}>('https://storage-application-management-default-rtdb.firebaseio.com/suppliers.json', supplier, {headers:headers})
   }
 
   deleteSupplier(id:string | undefined) {
-   return this.http.delete(`https://fruitmagacine-default-rtdb.firebaseio.com/suppliers/${id}.json`);
+   return this.http.delete(`https://storage-application-management-default-rtdb.firebaseio.com/suppliers/${id}.json`);
   }
 
   deleteAllSuppliers(){
-   return this.http.delete('https://fruitmagacine-default-rtdb.firebaseio.com/suppliers.json');
+   return this.http.delete('https://storage-application-management-default-rtdb.firebaseio.com/suppliers.json');
     
   }
 
   UpdateSupplier(id:string | undefined, supplier:Supplier){
-   return this.http.put(`https://fruitmagacine-default-rtdb.firebaseio.com/suppliers/${id}.json`, supplier);
+   return this.http.put(`https://storage-application-management-default-rtdb.firebaseio.com/suppliers/${id}.json`, supplier);
   }
 
   getSupplierDetails(id:string | undefined){
-   return this.http.get(`https://fruitmagacine-default-rtdb.firebaseio.com/suppliers/${id}.json`)
+   return this.http.get(`https://storage-application-management-default-rtdb.firebaseio.com/suppliers/${id}.json`)
     .pipe(map((response) => {
       let supplierDetail = {};
       supplierDetail = {...response,id:id};
@@ -38,7 +38,7 @@ export class SupplierService {
   }
 
   getAllSuppliers(){
-   return this.http.get<{ [key: string]: Supplier }>('https://fruitmagacine-default-rtdb.firebaseio.com/suppliers.json')
+   return this.http.get<{ [key: string]: Supplier }>('https://storage-application-management-default-rtdb.firebaseio.com/suppliers.json')
     .pipe(
       map((response) => {
         let suppliers: Supplier[] = [];
